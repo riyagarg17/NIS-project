@@ -1,0 +1,28 @@
+
+
+     <!-- main content-->
+     <div class="container">
+        
+         <div class="jumbotron login">
+             <h2 class="text-center mt-2"> Register  </h2>
+             <form method="POST" action="/user/register">
+                <div class="form-group">
+                     <label for="name"> Name:</label>
+                     <input type="text" name="name" class="form-control" placeholder="Enter name.." required value={{name}}>
+                 </div>
+                 <div class="form-group">
+                     <label for="Email"> Email:</label>
+                     <input type="email" name="email" class="form-control" placeholder="Enter Email Id.." required value={{email}}>
+                 </div>
+                 <div class="form-group">
+                    <label for="password"> Password:</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password.." required value="{{password}}"> 
+                </div>
+                <div class="form-group">
+                    <label for="password2"> Confirm Password:</label>
+                    <input type="password" name="password2" class="form-control" placeholder="Enter Password.." required value="{{password2}}">
+                </div>
+                <button  class="btn btn-primary" id="login-btn">register</button>
+             </form>
+         </div>
+    </div>
