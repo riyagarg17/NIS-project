@@ -1,0 +1,27 @@
+
+<h2 >My Friends</h2>
+<form action="/search" method="post" class="searchForm">
+	<input type="text" name="searchfriend" placeholder="username" autocomplete="off">
+	<button type="submit" class="btn btn-primary"> Search Friend</button>
+</form>
+<hr>
+	
+	<div class="row">
+		{{#each result}}
+		<div class="usercard col-md-2">
+		<img class="usercard-image" src="/images/man.png">
+		<p class="usercard-username">@({{this.friendName}})</p>
+		<form action="" method="get" class="add_friend">
+            <input type="hidden" name="receiverName" class="receiverName" value="{{this.friendName}}">
+            <input type="hidden" name="sender-name" class="sender-name" value="{{user.name}}">
+            <button  class="btn btn-warning" >
+				<a href="/chat"> 
+				<i class="fas fa-comments mr-3"></i>Begin Chat
+				</a></button>
+        </form>
+	</div>
+	{{/each}}
+	</div>
+	
+
+	

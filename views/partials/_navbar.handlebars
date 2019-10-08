@@ -5,20 +5,67 @@
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 		<span class="navbar-toggler-icon"> </span>
 	</button>
+	<button class="btn btn-dark mr-4" style="width: 20%;color:wheat"> <a href="/Achat" style="text-decoration: none;color:white"> Switch to anonymous mode</a></button>
 	{{#if user}}
 	<span class="navbar-text">Welcome {{user.name}}! </span>
 	{{/if}}
 	<div class="collapse navbar-collapse" id="navbarResponsive">
 		<ul class="navbar-nav ml-auto" style="color:white">
 			{{#if user}}
-			<li class="nav-item dropdown">
+			<li class="nav-item ">
+				<a href="/search" class="nav-link">Search <i class="fa fa-search"></i></a></li>
+			<li>
+			<li>
+				<div class="dropdown" style="">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i
+							class="fa fa-user-plus"></i>
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu" style="width: 300px; height: 400px; overflow-y: scroll;">
+						{{#if user.request}}
+						{{#each user.request}}
+						<li style="border-bottom: 1px solid lightgray">
+							<a href="#">
+								<div style=" display: flex;">
+									<img src="/images/man.png" class="userLogo mr-3 ml-2"> </a>
+									<p class="lead">{{this.name}}</p>
+								</div>
+								<div>
+
+									<div style="width: 50%; display: inline;">
+										
+										<input type="hidden" name="senderId" id="senderId" value="{{this.userId}}">
+										
+										<input type="hidden" name="senderName" id="senderName"
+											value="{{this.name}}">
+										<button type="submit" id="accept_friend" class="btn btn-success ml-2"
+											style="width: 8em">Accept</button>
+									</div>
+									<div style="width: 50%;  display: inline;">
+										<input type="hidden" name="user_Id" id="user_Id" value="{{this.userId}}">
+										<button type="submit" id="cancel_friend" class="btn btn-danger"
+											style="width: 8em">Cancel</button>
+									</div>
+								</div>
+							</a>
+						</li>
+						{{/each}}
+						{{else}}
+						<div>
+							<h4 style="text-align:center">No requests</h4>
+						</div>
+						{{/if}}
+					</ul>
+				</div>
+			</li>
+			<li class="nav-item dropdown ml-5">
 				<a class=" nav-link dropdown-toggle" data-toggle="dropdown">
 					<img src="/images/man.png" class="userLogo"> </a>
 				<div class="dropdown-menu ">
 					<a class="dropdown-item" href="/user/profile">My profile</a>
+					<a class="dropdown-item" href="/user/friends">My Friends</a>
 				</div>
 			</li>
-			<li class="nav-item ">
+			<li class="nav-item mr-5">
 				<a class="nav-link" href="/logout">Logout</a>
 			</li>
 			{{else}}

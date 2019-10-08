@@ -27,7 +27,19 @@ const userSchema=new mongoose.Schema({
     date:{
         type:Date,
         default: Date.now()
-    }
+    },
+	sentRequest:[{
+	    name: {type: String, default: ''}
+	}],
+	request: [{
+		userId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+		name: {type: String, default: ''}
+	}],
+	friendsList: [{
+		friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+		friendName: {type: String, default: ''}
+	}],
+	totalRequest: {type: Number, default:0}
     
 });
 

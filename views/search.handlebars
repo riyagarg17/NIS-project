@@ -1,0 +1,31 @@
+
+<h2 >Search Friends</h2>
+<form action="/search" method="post" class="searchForm">
+	<input type="text" name="searchfriend" placeholder="username" autocomplete="off">
+	<button type="submit" class="btn btn-primary"> Search User </button>
+</form>
+<hr>
+	
+	<div class="row">
+		{{#if result}}
+		{{#each result}}
+		<div class="usercard col-md-2">
+		<img class="usercard-image" src="/images/man.png">
+		<p class="usercard-username">@({{this.name}})</p>
+		<form action="" method="get" class="add_friend">
+            <input type="hidden" name="receiverName" class="receiverName" value="{{this.name}}">
+            <input type="hidden" name="sender-name" class="sender-name" value="{{user.name}}">
+            <button type="submit" onclick="addFriend('{{this.name}}')" class="accept" >
+				<i class="fa fa-user"></i> Add Friend</button>
+        </form>
+	</div>
+	{{/each}}
+	{{else}}
+						<div>
+							<p style="text-align:center" class="lead">Friend List empty. Start Sending friend requests to begin chat.</p>
+						</div>
+						{{/if}}
+	</div>
+	
+
+	
